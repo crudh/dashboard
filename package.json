@@ -1,0 +1,38 @@
+{
+  "name": "dashboard",
+  "version": "0.0.1",
+  "description": "dashboard tool",
+  "author": "Christian Rudh <christian@rudh.se>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crudh/dashboard"
+  },
+  "license": "Apache-2.0",
+  "main": "src/main.js",
+  "browserDependencies": {
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
+    "seamless-immutable": "^3.0.0",
+    "whatwg-fetch": "^0.9.0"
+  },
+  "dependencies": {
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
+    "seamless-immutable": "^3.0.0",
+    "whatwg-fetch": "^0.9.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.0.10",
+    "babelify": "^6.2.0",
+    "eslint-plugin-react": "^3.2.3",
+    "gulp": "^3.8.11",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-eslint": "^1.0.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-serve": "^1.0.0"
+  },
+  "keywords": [
+    "dashboard"
+  ]
+}
