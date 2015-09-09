@@ -110,7 +110,7 @@
     "eol-last": 1,
     "func-names": 2,
     "func-style": [2, "declaration"],
-    "indent": [2, 2, {"SwitchCase": 2}],
+    "indent": [2, 2, {"SwitchCase": 1}],
     "key-spacing": 2,
     "lines-around-comment": 1,
     "linebreak-style": [2, "unix"],
