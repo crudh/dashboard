@@ -3,9 +3,10 @@ var concat = require("gulp-concat");
 var browserify = require("gulp-browserify");
 var sourcemaps = require("gulp-sourcemaps");
 var eslint = require("gulp-eslint");
-var serve = require('gulp-serve');
+var nodemon = require("gulp-nodemon");
 
 var paths = {
+  serverMain: "./server/server.js",
   main: "./src/js/main.js",
   publicDir: "./public",
   jsFiles: ["./src/js/**/*.js"],
@@ -41,11 +42,17 @@ gulp.task("eslint", function() {
     .pipe(eslint.failOnError());
 });
 
-gulp.task("serve", serve({
-  root: "./public",
-  port: 8080
-}));
+gulp.task("nodemon", function() {
+  nodemon({
+    script: paths.serverMain,
+    ignore: ["public", "src"],
+    ext: "html js",
+    execMap: {
+      js: "node --harmony_arrow_functions"
+    }
+  });
+});
 
 gulp.task("build", ["eslint", "html", "js"]);
-gulp.task("dev", ["build", "watch", "serve"]);
+gulp.task("dev", ["build", "watch", "nodemon"]);
 gulp.task("default", ["build"]);
