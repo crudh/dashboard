@@ -101,7 +101,7 @@
 
     // Stylistic Issues
     "array-bracket-spacing": 1,
-    // "block-spacing": [1, "never"],
+    "block-spacing": [1, "never"],
     "brace-style": 1,
     "camelcase": 2,
     "comma-spacing": 1,
@@ -140,14 +140,14 @@
     "constructor-super": 2,
     "no-class-assign": 2,
     "no-const-assign": 2,
-    // "no-dupe-class-members": 2,
+    "no-dupe-class-members": 2,
     "no-this-before-super": 2,
     "no-var": 2,
     "object-shorthand": 2,
-    // "prefer-arrow-callback": 2,
+    "prefer-arrow-callback": 2,
     "prefer-const": 2,
     "prefer-spread": 2,
-    // "prefer-template": 1
+    "prefer-template": 1,
 
     // React
     "react/display-name": [1, {"acceptTranspilerName": true}],
