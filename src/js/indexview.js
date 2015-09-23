@@ -1,13 +1,17 @@
 import React from "react";
+import {connect} from "react-redux";
+import EnvironmentsView from "./environments/environmentsview";
 
-const IndexView = React.createClass({
+class IndexView extends React.Component {
   render() {
+    console.log("IndexView", this.props);
     return (
       <div>
         <h1>dashboard</h1>
+        <EnvironmentsView/>
       </div>
     );
   }
-});
+}
 
-export default IndexView;
+export default connect(state => state)(IndexView);

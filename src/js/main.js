@@ -3,10 +3,15 @@ import "whatwg-fetch";
 
 import React from "react";
 import Router, {Route, DefaultRoute, NotFoundRoute, RouteHandler, Link} from "react-router";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import appReducer from "./core/reducers";
 import NotFoundView from "./core/notfoundview";
 import IndexView from "./indexview";
 
-const MainView = React.createClass({
+const store = createStore(appReducer);
+
+class MainView extends React.Component {
   render() {
     return (
       <div>
@@ -17,7 +22,7 @@ const MainView = React.createClass({
       </div>
     );
   }
-});
+}
 
 const routes = (
   <Route handler={MainView}>
@@ -26,8 +31,13 @@ const routes = (
   </Route>
 );
 
-Router.run(routes, Router.HistoryLocation, Handler => {
-  React.render(<Handler/>, document.getElementById("main"));
+Router.run(routes, Router.HistoryLocation, (Handler, routerState) => {
+  React.render(
+    <Provider store={store}>
+      {() => <Handler routerState={routerState}/>}
+    </Provider>,
+    document.getElementById("main")
+  );
 });
 
 export default MainView;
