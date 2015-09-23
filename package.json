@@ -12,20 +12,22 @@
   "browserDependencies": {
     "react": "^0.13.3",
     "react-redux": "^2.1.2",
-    "react-router": "^0.13.3",
-    "redux": "^2.0.0",
+    "react-router": "^1.0.0-rc1",
+    "redux": "^3.0.0",
+    "history": "^1.10.1",
     "seamless-immutable": "^3.0.0",
     "whatwg-fetch": "^0.9.0"
   },
   "dependencies": {
-    "body-parser": "^1.12.4",
-    "express": "^4.13.3",
     "react": "^0.13.3",
     "react-redux": "^2.1.2",
-    "react-router": "^0.13.3",
-    "redux": "^2.0.0",
+    "react-router": "^1.0.0-rc1",
+    "redux": "^3.0.0",
+    "history": "^1.10.1",
     "seamless-immutable": "^3.0.0",
-    "whatwg-fetch": "^0.9.0"
+    "whatwg-fetch": "^0.9.0",
+    "body-parser": "^1.12.4",
+    "express": "^4.13.3"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.1",

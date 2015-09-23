@@ -4,7 +4,6 @@ import EnvironmentsView from "./environments/environmentsview";
 
 class IndexView extends React.Component {
   render() {
-    console.log("IndexView", this.props);
     return (
       <div>
         <h1>dashboard</h1>
