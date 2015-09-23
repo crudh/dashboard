@@ -9,15 +9,6 @@
   },
   "license": "Apache-2.0",
   "main": "src/main.js",
-  "browserDependencies": {
-    "react": "^0.13.3",
-    "react-redux": "^2.1.2",
-    "react-router": "^1.0.0-rc1",
-    "redux": "^3.0.0",
-    "history": "^1.10.1",
-    "seamless-immutable": "^3.0.0",
-    "whatwg-fetch": "^0.9.0"
-  },
   "dependencies": {
     "react": "^0.13.3",
     "react-redux": "^2.1.2",
