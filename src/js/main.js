@@ -3,14 +3,15 @@ import "whatwg-fetch";
 
 import React from "react";
 import Router, {Route, IndexRoute} from "react-router";
-import {createStore} from "redux";
+import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
-import appReducer from "./core/reducers";
 import createBrowserHistory from "history/lib/createBrowserHistory";
+import * as reducers from "./core/reducers";
 import NotFoundView from "./core/notfoundview";
 import AppView from "./appview";
 import IndexView from "./indexview";
 
+const appReducer = combineReducers(reducers);
 const store = createStore(appReducer);
 
 const routes = (

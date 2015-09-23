@@ -1,22 +1,22 @@
-const initialState = {
-  environments: [
-    {
-      id: "test",
-      name: "Test"
-    },
-    {
-      id: "qa",
-      name: "QA"
-    },
-    {
-      id: "prod",
-      name: "Production"
-    }
-  ]
-};
+const initialEnvironments = [
+  {
+    id: "test",
+    name: "Test"
+  },
+  {
+    id: "qa",
+    name: "QA"
+  },
+  {
+    id: "prod",
+    name: "Production"
+  }
+];
 
-function appReducer(state = initialState, action) {
+export function environments(state = initialEnvironments, action) {
   return state;
 }
 
-export default appReducer;
+export function environment(state = {}, action) {
+  return state;
+}
