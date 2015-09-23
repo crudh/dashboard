@@ -1,7 +1,7 @@
-import React, {PropTypes} from "react";
+import React, {Component, PropTypes} from "react";
 import {Link} from "react-router";
 
-export default class MainView extends React.Component {
+export default class MainView extends Component {
   render() {
     return (
       <div>

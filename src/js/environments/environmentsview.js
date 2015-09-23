@@ -1,6 +1,6 @@
-import React from "react";
+import React, {Component} from "react";
 
-export default class EnvironmentsView extends React.Component {
+export default class EnvironmentsView extends Component {
   render() {
     return <span>test</span>;
   }

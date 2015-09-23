@@ -1,8 +1,8 @@
-import React from "react";
+import React, {Component} from "react";
 import {connect} from "react-redux";
 import EnvironmentsView from "./environments/environmentsview";
 
-class IndexView extends React.Component {
+class IndexView extends Component {
   render() {
     return (
       <div>
@@ -13,4 +13,4 @@ class IndexView extends React.Component {
   }
 }
 
-export default connect(state => state)(IndexView);
+export default connect(_ => _)(IndexView);
