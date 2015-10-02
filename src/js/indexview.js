@@ -1,20 +1,13 @@
-import React, {Component, PropTypes} from "react";
-import {connect} from "react-redux";
-import EnvironmentsView from "./environments/environmentsview";
+import React, {Component} from "react";
+import EnvironmentsController from "./environments/environmentscontroller";
 
-class IndexView extends Component {
+export default class IndexView extends Component {
   render() {
     return (
       <div>
         <h1>dashboard</h1>
-        <EnvironmentsView environments={this.props.environments}/>
+        <EnvironmentsController/>
       </div>
     );
   }
 }
-
-IndexView.propTypes = {
-  environments: PropTypes.array
-};
-
-export default connect(_ => _)(IndexView);
