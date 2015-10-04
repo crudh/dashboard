@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const environments = require("./environments_web");
-const versions = require("./versions_web");
+const environments = require("./environments/environments_web");
+const versions = require("./versions/versions_web");
 
 const app = express();
 app.use(express.static("public"));
