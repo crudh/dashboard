@@ -7,10 +7,10 @@ var nodemon = require("gulp-nodemon");
 
 var paths = {
   serverMain: "./server/server.js",
-  main: "./src/js/main.js",
+  main: "./client/main.js",
   publicDir: "./public",
-  jsFiles: ["./src/js/**/*.js"],
-  htmlFiles: ["./src/index.html"]
+  jsFiles: ["./client/**/*.js"],
+  htmlFiles: ["./client/index.html"]
 };
 
 gulp.task("js", function() {
@@ -45,7 +45,7 @@ gulp.task("eslint", function() {
 gulp.task("nodemon", function() {
   nodemon({
     script: paths.serverMain,
-    ignore: ["public", "src"],
+    ignore: ["public", "client"],
     ext: "html js",
     execMap: {
       js: "node --harmony_arrow_functions"
