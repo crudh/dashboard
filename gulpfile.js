@@ -3,6 +3,7 @@ const eslint = require("gulp-eslint");
 const gulp = require("gulp");
 const gulpUtil = require("gulp-util");
 const nodemon = require("gulp-nodemon");
+const runSequnce = require("run-sequence");
 const webpack = require("webpack");
 const webpackConfig = require("./webpack.config.prod.js");
 const webpackDevConfig = require("./webpack.config.dev.js");
@@ -53,8 +54,34 @@ gulp.task("nodemon", () => {
   });
 });
 
-gulp.task("build-base", ["eslint", "html"]);
-gulp.task("build-dev", ["build-base", "webpack:build-dev"]);
-gulp.task("build", ["build-base", "webpack:build"]);
-gulp.task("dev", ["build-dev", "watch", "nodemon"]);
+gulp.task("clean", () => {
+  return del(["public"]);
+});
+
+gulp.task("build", callback => {
+  runSequnce(
+    "eslint",
+    "clean",
+    ["html", "webpack:build"],
+    callback
+  );
+});
+
+gulp.task("build-dev", callback => {
+  runSequnce(
+    "eslint",
+    "clean",
+    ["html", "webpack:build-dev"],
+    callback
+  );
+});
+
+gulp.task("dev", callback => {
+  runSequnce(
+    "build-dev",
+    ["watch", "nodemon"],
+    callback
+  );
+});
+
 gulp.task("default", ["build"]);
