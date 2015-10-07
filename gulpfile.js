@@ -1,58 +1,87 @@
-var gulp = require("gulp");
-var concat = require("gulp-concat");
-var browserify = require("gulp-browserify");
-var sourcemaps = require("gulp-sourcemaps");
-var eslint = require("gulp-eslint");
-var nodemon = require("gulp-nodemon");
+const del = require("del");
+const eslint = require("gulp-eslint");
+const gulp = require("gulp");
+const gulpUtil = require("gulp-util");
+const nodemon = require("gulp-nodemon");
+const runSequnce = require("run-sequence");
+const webpack = require("webpack");
+const webpackConfig = require("./webpack.config.prod.js");
+const webpackDevConfig = require("./webpack.config.dev.js");
 
-var paths = {
-  serverMain: "./server/server.js",
-  main: "./src/js/main.js",
-  publicDir: "./public",
-  jsFiles: ["./src/js/**/*.js"],
-  htmlFiles: ["./src/index.html"]
-};
+const webpackDevCompiler = webpack(webpackDevConfig);
 
-gulp.task("js", function() {
-  gulp.src(paths.main)
-    .pipe(browserify({
-      transform: ["babelify"],
-      debug: true
-    }))
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(concat("bundle.js"))
-    .pipe(sourcemaps.write("./"))
-    .pipe(gulp.dest(paths.publicDir));
+gulp.task("webpack:build-dev", callback => {
+  webpackDevCompiler.run((err, stats) => {
+    if (err) throw new gulpUtil.PluginError("webpack:build-dev", err);
+    gulpUtil.log("[webpack:build-dev]", stats.toString({
+      colors: true
+    }));
+    callback();
+  });
 });
 
-gulp.task("html", function() {
-  gulp.src(paths.htmlFiles)
-    .pipe(gulp.dest(paths.publicDir));
+gulp.task("webpack:build", callback => {
+  webpack(webpackConfig, (err, stats) => {
+    if (err) throw new gulpUtil.PluginError("webpack:build", err);
+    gulpUtil.log("[webpack:build]", stats.toString({
+      colors: true
+    }));
+    callback();
+  });
 });
 
-gulp.task("watch", function() {
-  gulp.watch(paths.jsFiles, ["js"]);
-  gulp.watch(paths.htmlFiles, ["html"]);
+gulp.task("html", () => {
+  gulp.src(["./client/index.html"])
+    .pipe(gulp.dest("./public"));
 });
 
-gulp.task("eslint", function() {
-  return gulp.src(paths.jsFiles)
+gulp.task("eslint", () => {
+  return gulp.src(["./client/**/*.js"])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failOnError());
 });
 
-gulp.task("nodemon", function() {
+gulp.task("watch", () => {
+  gulp.watch("./public", ["html"]);
+});
+
+gulp.task("nodemon", () => {
   nodemon({
-    script: paths.serverMain,
-    ignore: ["public", "src"],
-    ext: "html js",
-    execMap: {
-      js: "node --harmony_arrow_functions"
-    }
+    script: "./server/server.js",
+    ignore: ["public", "client"],
+    ext: "html js"
   });
 });
 
-gulp.task("build", ["eslint", "html", "js"]);
-gulp.task("dev", ["build", "watch", "nodemon"]);
+gulp.task("clean", () => {
+  return del(["public"]);
+});
+
+gulp.task("build", callback => {
+  runSequnce(
+    "eslint",
+    "clean",
+    ["html", "webpack:build"],
+    callback
+  );
+});
+
+gulp.task("build-dev", callback => {
+  runSequnce(
+    "eslint",
+    "clean",
+    ["html", "webpack:build-dev"],
+    callback
+  );
+});
+
+gulp.task("dev", callback => {
+  runSequnce(
+    "build-dev",
+    ["watch", "nodemon"],
+    callback
+  );
+});
+
 gulp.task("default", ["build"]);
