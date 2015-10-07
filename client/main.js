@@ -2,6 +2,7 @@ import "babel-core/polyfill";
 import "whatwg-fetch";
 
 import React from "react";
+import ReactDOM from "react-dom";
 import Router, {Route, IndexRoute} from "react-router";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
@@ -23,9 +24,9 @@ const routes = (
 
 const history = createBrowserHistory();
 
-React.render(
+ReactDOM.render(
   <Provider store={store}>
-    {() => <Router history={history}>{routes}</Router>}
+    <Router history={history}>{routes}</Router>
   </Provider>,
   document.getElementById("main")
 );
