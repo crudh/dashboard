@@ -11,6 +11,8 @@ const webpackDevConfig = require("./webpack.config.dev.js");
 const webpackDevCompiler = webpack(webpackDevConfig);
 
 gulp.task("webpack:build-dev", callback => {
+  process.env.NODE_ENV = "development";
+
   webpackDevCompiler.run((err, stats) => {
     if (err) throw new gulpUtil.PluginError("webpack:build-dev", err);
     gulpUtil.log("[webpack:build-dev]", stats.toString({
@@ -21,6 +23,8 @@ gulp.task("webpack:build-dev", callback => {
 });
 
 gulp.task("webpack:build", callback => {
+  process.env.NODE_ENV = "production";
+
   webpack(webpackConfig, (err, stats) => {
     if (err) throw new gulpUtil.PluginError("webpack:build", err);
     gulpUtil.log("[webpack:build]", stats.toString({
