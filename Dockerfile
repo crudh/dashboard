@@ -1,8 +1,16 @@
 FROM node:latest
+MAINTAINER Christian Rudh "christian@rudh.se"
+
+RUN useradd -ms /bin/bash node
 
 WORKDIR /opt
 
-RUN git clone https://github.com/crudh/dashboard.git
+COPY . dashboard
+
+RUN chown -R node:node /opt/dashboard
+
+USER node
+ENV HOME /home/node
 
 WORKDIR /opt/dashboard
 
