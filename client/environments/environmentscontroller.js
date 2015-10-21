@@ -1,17 +1,24 @@
 import React, {Component, PropTypes} from "react";
 import {connect} from "react-redux";
+import {setEnvironment} from "../core/actions";
 import EnvironmentsView from "./environmentsview";
 
 class EnvironmentsController extends Component {
   render() {
-    const {environments} = this.props;
+    const {dispatch, list, active} = this.props;
 
-    return <EnvironmentsView environments={environments}/>;
+    return (
+      <EnvironmentsView
+        setEnvironment={id => dispatch(setEnvironment(id))}
+        list={list}
+        active={active}/>
+    );
   }
 }
 
 EnvironmentsController.propTypes = {
-  environments: PropTypes.array
+  list: PropTypes.array,
+  active: PropTypes.object
 };
 
-export default connect(_ => _)(EnvironmentsController);
+export default connect(state => state.environments)(EnvironmentsController);
