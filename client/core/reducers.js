@@ -1,4 +1,5 @@
 import {combineReducers} from "redux";
+import {routerStateReducer} from "redux-router";
 import {SET_ENVIRONMENT} from "./actions";
 
 const initialEnvironments = {
@@ -31,7 +32,8 @@ function environments(state = initialEnvironments, action) {
 }
 
 const rootReducer = combineReducers({
-  environments
+  environments,
+  router: routerStateReducer
 });
 
 export default rootReducer;

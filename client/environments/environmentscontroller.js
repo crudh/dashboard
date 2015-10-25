@@ -11,12 +11,14 @@ class EnvironmentsController extends Component {
       <EnvironmentsView
         setEnvironment={id => dispatch(setEnvironment(id))}
         list={list}
-        active={active}/>
+        active={active}
+      />
     );
   }
 }
 
 EnvironmentsController.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   list: PropTypes.array,
   active: PropTypes.object
 };

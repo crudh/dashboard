@@ -1,23 +1,25 @@
 import React, {Component, PropTypes} from "react";
+import {Link} from "react-router";
 
 class TitleView extends Component {
   render() {
-    const {setEnvironment, env, activeId} = this.props;
+    const {env, activeId} = this.props;
     if (env.id === activeId) {
       return <span>{env.name}</span>;
     }
 
-    return (
-      <a href="#" onClick={() => setEnvironment(env.id)}>
-        {env.name}
-      </a>
-    );
+    return <Link to={`/environments/${env.id}`}>{env.name}</Link>;
   }
 }
 
+TitleView.propTypes = {
+  env: PropTypes.object.isRequired,
+  activeId: PropTypes.string
+};
+
 export default class EnvironmentsView extends Component {
   render() {
-    const {setEnvironment, list, active} = this.props;
+    const {list, active} = this.props;
     if (!list) return (
       <span>No environments found</span>
     );
@@ -27,8 +29,7 @@ export default class EnvironmentsView extends Component {
         <li key={env.id}>
           <TitleView
             env={env}
-            activeId={active.id}
-            setEnvironment={setEnvironment}/>
+            activeId={active.id}/>
         </li>
       );
     });
@@ -42,7 +43,6 @@ export default class EnvironmentsView extends Component {
 }
 
 EnvironmentsView.propTypes = {
-  setEnvironment: PropTypes.func,
   list: PropTypes.array,
   active: PropTypes.object
 };
