@@ -28,6 +28,7 @@ class Root extends Component {
           <Route path="/" component={AppView}>
             <IndexRoute component={IndexView}/>
             <Route path="environments" component={EnvironmentsController}/>
+            <Route path="environments/:environmentId" component={EnvironmentsController}/>
             <Route path="*" component={NotFoundView}/>
           </Route>
         </ReduxRouter>
