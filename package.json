@@ -18,6 +18,7 @@
     "react-redux": "^3.0.0",
     "react-router": "^1.0.0-rc1",
     "redux": "^3.0.2",
+    "redux-router": "^1.0.0-beta3",
     "whatwg-fetch": "^0.9.0"
   },
   "devDependencies": {

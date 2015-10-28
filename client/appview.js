@@ -6,7 +6,9 @@ export default class MainView extends Component {
     return (
       <div>
         <div>
-          <Link to="/">Main</Link>
+          <Link to="/">Start</Link>
+          <span> - </span>
+          <Link to="/environments">Environments</Link>
         </div>
         {this.props.children}
       </div>

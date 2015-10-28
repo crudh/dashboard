@@ -4,21 +4,42 @@ import {setEnvironment} from "../core/actions";
 import EnvironmentsView from "./environmentsview";
 
 class EnvironmentsController extends Component {
-  render() {
-    const {dispatch, list, active} = this.props;
+  componentWillMount() {
+    this.loadData(this.props);
+  }
 
-    return (
-      <EnvironmentsView
-        setEnvironment={id => dispatch(setEnvironment(id))}
-        list={list}
-        active={active}/>
-    );
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.environmentId !== this.props.environmentId) {
+      this.loadData(nextProps);
+    }
+  }
+
+  loadData(props) {
+    props.setEnvironment(props.environmentId);
+  }
+
+  render() {
+    return <EnvironmentsView {...this.props}/>;
   }
 }
 
 EnvironmentsController.propTypes = {
   list: PropTypes.array,
-  active: PropTypes.object
+  active: PropTypes.object,
+  environmentId: PropTypes.string
 };
 
-export default connect(state => state.environments)(EnvironmentsController);
+function mapStateToProps(state) {
+  const {list, active} = state.environments;
+  const {environmentId} = state.router.params;
+
+  return {
+    list,
+    active,
+    environmentId
+  };
+}
+
+export default connect(mapStateToProps, {
+  setEnvironment
+})(EnvironmentsController);

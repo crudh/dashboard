@@ -47,7 +47,7 @@ gulp.task("eslint", () => {
 });
 
 gulp.task("watch", () => {
-  gulp.watch("./public", ["html"]);
+  gulp.watch("./client/**/*.html", ["html"]);
 });
 
 gulp.task("nodemon", () => {
