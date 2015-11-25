@@ -15,11 +15,11 @@
     "history": "^1.11.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-redux": "^3.0.0",
+    "react-redux": "^4.0.0",
     "react-router": "^1.0.0-rc1",
     "redux": "^3.0.2",
     "redux-router": "^1.0.0-beta3",
-    "whatwg-fetch": "^0.9.0"
+    "whatwg-fetch": "^0.10.1"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.1",
