@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from "react";
 import {Link} from "react-router";
 
-export default class MainView extends Component {
+export default class AppView extends Component {
   render() {
     return (
       <div>
@@ -16,6 +16,6 @@ export default class MainView extends Component {
   }
 }
 
-MainView.propTypes = {
+AppView.propTypes = {
   children: PropTypes.element.isRequired
 };
