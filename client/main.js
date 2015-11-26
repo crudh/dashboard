@@ -1,3 +1,5 @@
+import "gridlex/dist/gridlex.css";
+
 import "babel-core/polyfill";
 import "whatwg-fetch";
 

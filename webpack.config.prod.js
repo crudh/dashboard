@@ -30,6 +30,8 @@ module.exports = {
         test: /\.js$/,
         loader: "babel",
         include: path.join(__dirname, "client")
+    }, {
+      test: /\.css$/, loader: "style-loader!css-loader"
     }]
   }
 };

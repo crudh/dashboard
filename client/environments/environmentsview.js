@@ -1,3 +1,5 @@
+import "./environments.css";
+
 import React, {Component, PropTypes} from "react";
 import {Link} from "react-router";
 
@@ -35,9 +37,23 @@ export default class EnvironmentsView extends Component {
     });
 
     return (
-      <ul>
-        {environmentList}
-      </ul>
+      <div className="grid">
+        <div className="col-3">
+          <h3>Name</h3>
+        </div>
+        <div className="col-9">
+          <h3>Content</h3>
+        </div>
+
+        <div className="col-3">
+          <ul>
+            {environmentList}
+          </ul>
+        </div>
+        <div className="col-9">
+          content goes here...
+        </div>
+      </div>
     );
   }
 }
