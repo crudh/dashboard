@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
 import {routerStateReducer} from "redux-router";
-import {SET_ENVIRONMENT} from "./actions";
+import {SET_ENVIRONMENT} from "../actions/actions";
 
 const initialEnvironments = {
   list: [

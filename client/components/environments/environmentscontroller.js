@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from "react";
 import {connect} from "react-redux";
-import {setEnvironment} from "../core/actions";
+import {setEnvironment} from "../../actions/actions";
 import EnvironmentsView from "./environmentsview";
 
 class EnvironmentsController extends Component {

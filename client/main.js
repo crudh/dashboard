@@ -10,11 +10,11 @@ import {createStore, compose} from "redux";
 import {Provider} from "react-redux";
 import {reduxReactRouter, ReduxRouter} from "redux-router";
 import createHistory from "history/lib/createBrowserHistory";
-import rootReducer from "./core/reducers";
-import NotFoundView from "./core/notfoundview";
-import AppView from "./appview";
+import rootReducer from "./reducers/reducers";
+import NotFoundView from "./components/common/notfoundview";
+import AppView from "./components/appview";
 import IndexView from "./indexview";
-import EnvironmentsController from "./environments/environmentscontroller";
+import EnvironmentsController from "./components/environments/environmentscontroller";
 
 const store = compose(
   reduxReactRouter({
