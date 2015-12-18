@@ -29,9 +29,9 @@ EnvironmentsController.propTypes = {
   environmentId: PropTypes.string
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   const {list, active} = state.environments;
-  const {environmentId} = state.router.params;
+  const {environmentId} = props.params;
 
   return {
     list,

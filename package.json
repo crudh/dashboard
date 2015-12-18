@@ -13,13 +13,13 @@
     "body-parser": "^1.12.4",
     "express": "^4.13.3",
     "gridlex": "^2.0.5",
-    "history": "^1.11.0",
+    "history": "1.13.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^4.0.0",
     "react-router": "^1.0.0",
     "redux": "^3.0.2",
-    "redux-router": "^1.0.0-beta3",
+    "redux-simple-router": "^1.0.0",
     "whatwg-fetch": "^0.10.1"
   },
   "devDependencies": {
