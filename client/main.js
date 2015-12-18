@@ -5,10 +5,10 @@ import "whatwg-fetch";
 
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
-import {Route, IndexRoute} from "react-router";
-import {createStore, compose} from "redux";
+import {IndexRoute, Route, Router} from "react-router";
+import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {reduxReactRouter, ReduxRouter} from "redux-router";
+import {syncReduxAndRouter} from "redux-simple-router";
 import createHistory from "history/lib/createBrowserHistory";
 import rootReducer from "./reducers/reducers";
 import NotFoundView from "./components/common/notfoundview";
@@ -16,24 +16,23 @@ import AppView from "./components/appview";
 import IndexView from "./indexview";
 import EnvironmentsController from "./components/environments/environmentscontroller";
 
-const store = compose(
-  reduxReactRouter({
-    createHistory
-  })
-)(createStore)(rootReducer);
+const store = createStore(rootReducer);
+const history = createHistory();
+
+syncReduxAndRouter(history, store);
 
 class Root extends Component {
   render() {
     return (
       <Provider store={store}>
-        <ReduxRouter>
+        <Router history={history}>
           <Route path="/" component={AppView}>
             <IndexRoute component={IndexView}/>
             <Route path="environments" component={EnvironmentsController}/>
             <Route path="environments/:environmentId" component={EnvironmentsController}/>
             <Route path="*" component={NotFoundView}/>
           </Route>
-        </ReduxRouter>
+        </Router>
       </Provider>
     );
   }

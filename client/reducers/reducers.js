@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import {routerStateReducer} from "redux-router";
+import {routeReducer} from "redux-simple-router";
 import {SET_ENVIRONMENT} from "../actions/actions";
 
 const initialEnvironments = {
@@ -33,7 +33,7 @@ function environments(state = initialEnvironments, action) {
 
 const rootReducer = combineReducers({
   environments,
-  router: routerStateReducer
+  routing: routeReducer
 });
 
 export default rootReducer;
