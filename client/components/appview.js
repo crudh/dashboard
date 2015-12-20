@@ -8,6 +8,8 @@ export default class AppView extends Component {
         <div>
           <Link to="/">Start</Link>
           <span> - </span>
+          <Link to="/checks">Checks</Link>
+          <span> - </span>
           <Link to="/environments">Environments</Link>
         </div>
         {this.props.children}

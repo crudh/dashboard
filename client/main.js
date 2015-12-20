@@ -14,6 +14,7 @@ import rootReducer from "./reducers/reducers";
 import NotFoundView from "./components/common/notfoundview";
 import AppView from "./components/appview";
 import IndexView from "./indexview";
+import ChecksController from "./components/checks/checkscontroller";
 import EnvironmentsController from "./components/environments/environmentscontroller";
 
 const store = createStore(rootReducer);
@@ -30,6 +31,7 @@ class Root extends Component {
             <IndexRoute component={IndexView}/>
             <Route path="environments" component={EnvironmentsController}/>
             <Route path="environments/:environmentId" component={EnvironmentsController}/>
+            <Route path="checks" component={ChecksController}/>
             <Route path="*" component={NotFoundView}/>
           </Route>
         </Router>
