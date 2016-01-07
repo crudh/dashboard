@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from "react";
 import {connect} from "react-redux";
 import {fetchChecks} from "../../actions/actions";
+import {INIT} from "../../core/statuses";
 import ChecksView from "./checksview";
 
 class ChecksController extends Component {
@@ -9,7 +10,7 @@ class ChecksController extends Component {
   }
 
   loadData(props) {
-    if (props.list) return;
+    if (props.status !== INIT) return;
 
     props.fetchChecks();
   }
@@ -20,14 +21,18 @@ class ChecksController extends Component {
 }
 
 ChecksController.propTypes = {
-  list: PropTypes.array
+  list: PropTypes.array,
+  status: PropTypes.string.isRequired,
+  error: PropTypes.string
 };
 
 function mapStateToProps(state) {
-  const {list} = state.checks;
+  const {list, status, error} = state.checks;
 
   return {
-    list
+    list,
+    status,
+    error
   };
 }
 

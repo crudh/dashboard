@@ -1,10 +1,15 @@
 import React, {Component, PropTypes} from "react";
-
+import {OK} from "../../core/statuses";
 
 export default class ChecksView extends Component {
   render() {
-    const {list} = this.props;
-    if (!list) return (
+    const {list, status, error} = this.props;
+
+    if (status !== OK) return (
+      <span>{status} {error}</span>
+    );
+
+    if (!list || list.length === 0) return (
       <span>No checks found</span>
     );
 
@@ -33,5 +38,7 @@ export default class ChecksView extends Component {
 }
 
 ChecksView.propTypes = {
-  list: PropTypes.array
+  list: PropTypes.array,
+  status: PropTypes.string.isRequired,
+  error: PropTypes.string
 };
