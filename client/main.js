@@ -6,9 +6,10 @@ import "whatwg-fetch";
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import {IndexRoute, Route, Router} from "react-router";
-import {createStore} from "redux";
+import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import {syncReduxAndRouter} from "redux-simple-router";
+import thunk from "redux-thunk";
 import createHistory from "history/lib/createBrowserHistory";
 import rootReducer from "./reducers/reducers";
 import NotFoundView from "./components/common/notfoundview";
@@ -17,7 +18,11 @@ import IndexView from "./indexview";
 import ChecksController from "./components/checks/checkscontroller";
 import EnvironmentsController from "./components/environments/environmentscontroller";
 
-const store = createStore(rootReducer);
+const createStoreWithMiddleware = applyMiddleware(
+  thunk
+)(createStore);
+const store = createStoreWithMiddleware(rootReducer);
+
 const history = createHistory();
 
 syncReduxAndRouter(history, store);
