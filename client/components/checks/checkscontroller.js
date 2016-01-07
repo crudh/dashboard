@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from "react";
 import {connect} from "react-redux";
-import {fetchChecks} from "../../actions/actions";
+import {fetchChecks} from "../../actions/checksactions";
 import {INIT} from "../../core/statuses";
 import ChecksView from "./checksview";
 
