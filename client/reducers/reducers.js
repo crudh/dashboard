@@ -1,7 +1,7 @@
 import {combineReducers} from "redux";
 import {routeReducer} from "redux-simple-router";
-import checks from "./checksReducers";
-import environments from "./environmentsReducers";
+import checks from "./checksreducers";
+import environments from "./environmentsreducers";
 
 const rootReducer = combineReducers({
   checks,
