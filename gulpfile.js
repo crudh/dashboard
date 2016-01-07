@@ -8,17 +8,14 @@ const webpack = require("webpack");
 const webpackConfig = require("./webpack.config.prod.js");
 const webpackDevConfig = require("./webpack.config.dev.js");
 
-const webpackDevCompiler = webpack(webpackDevConfig);
-
-gulp.task("webpack:build-dev", callback => {
+gulp.task("webpack:build-dev", () => {
   process.env.NODE_ENV = "development";
 
-  webpackDevCompiler.run((err, stats) => {
+  webpack(webpackDevConfig, (err, stats) => {
     if (err) throw new gulpUtil.PluginError("webpack:build-dev", err);
     gulpUtil.log("[webpack:build-dev]", stats.toString({
       colors: true
     }));
-    callback();
   });
 });
 

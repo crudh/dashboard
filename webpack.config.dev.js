@@ -2,9 +2,9 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-  devtool: "eval",
+  watch: true,
+  devtool: "source-map",
   entry: [
-    "webpack-hot-middleware/client",
     "./client/main"
   ],
   output: {
@@ -14,7 +14,6 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
   module: {
