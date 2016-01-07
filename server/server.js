@@ -8,20 +8,6 @@ const checks = require("./checks/checks_web");
 const app = express();
 const environment = app.get("env");
 
-if (environment === "development") {
-  const webpack = require("webpack");
-  const webpackDevConfig = require("../webpack.config.dev");
-
-  const compiler = webpack(webpackDevConfig);
-
-  app.use(require("webpack-dev-middleware")(compiler, {
-    noInfo: true,
-    publicPath: webpackDevConfig.output.publicPath
-  }));
-
-  app.use(require("webpack-hot-middleware")(compiler));
-}
-
 app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
