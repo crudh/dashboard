@@ -1,6 +1,6 @@
 import "gridlex/dist/gridlex.css";
 
-import "babel-core/polyfill";
+import "babel-polyfill";
 import "whatwg-fetch";
 
 import React, {Component} from "react";
