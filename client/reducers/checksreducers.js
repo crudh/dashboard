@@ -1,4 +1,4 @@
-import {FETCH_CHECKS, FETCH_CHECKS_COMPLETED, FETCH_CHECKS_FAILED} from "../actions/checksactions";
+import {FETCH_CHECKS, FETCH_CHECKS_COMPLETED, FETCH_CHECKS_FAILED, ADD_CHECK} from "../actions/checksactions";
 import {INIT, LOADING, FAIL, OK} from "../core/statuses";
 
 const initialChecks = {
@@ -24,6 +24,10 @@ export default function checks(state = initialChecks, action) {
       return Object.assign({}, state, {
         status: FAIL,
         error: action.error
+      });
+    case ADD_CHECK:
+      return Object.assign({}, state, {
+        status: LOADING
       });
     default:
       return state;
