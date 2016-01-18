@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from "react";
 import {connect} from "react-redux";
-import {fetchChecks} from "../../actions/checksactions";
+import {fetchChecks, addCheck} from "../../actions/checksactions";
 import {INIT} from "../../core/statuses";
 import ChecksView from "./checksview";
 
@@ -23,7 +23,8 @@ class ChecksController extends Component {
 ChecksController.propTypes = {
   list: PropTypes.array,
   status: PropTypes.string.isRequired,
-  error: PropTypes.string
+  error: PropTypes.string,
+  addCheck: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -37,5 +38,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-  fetchChecks
+  fetchChecks,
+  addCheck
 })(ChecksController);

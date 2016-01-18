@@ -4,6 +4,8 @@ export const FETCH_CHECKS = "FETCH_CHECKS";
 export const FETCH_CHECKS_COMPLETED = "FETCH_CHECKS_COMPLETED";
 export const FETCH_CHECKS_FAILED = "FETCH_CHECKS_FAILED";
 
+export const ADD_CHECK = "ADD_CHECK";
+
 function fetchChecksFromServer() {
   return fetch("http://localhost:3000/services/checks");
 }
@@ -33,5 +35,11 @@ export function fetchChecks() {
       .catch(error => {
         dispatch(fetchChecksFailed(error.message));
       });
+  };
+}
+
+export function addCheck() {
+  return dispatch => {
+    dispatch({type: ADD_CHECK});
   };
 }
