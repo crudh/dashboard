@@ -17,4 +17,6 @@ function getEnvironments() {
   return environments;
 }
 
-exports.getEnvironments = getEnvironments;
+export default {
+  getEnvironments
+};

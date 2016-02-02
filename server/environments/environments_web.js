@@ -1,9 +1,11 @@
-const environments = require("./environments");
+import environments from "./environments";
 
-const init = app => {
+function init(app) {
   app.get("/services/environments", (req, res) => {
     res.send(environments.getEnvironments());
   });
-};
+}
 
-exports.init = init;
+export default {
+  init
+};

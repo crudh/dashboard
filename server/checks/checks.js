@@ -15,4 +15,6 @@ function getChecks() {
   return checks;
 }
 
-exports.getChecks = getChecks;
+export default {
+  getChecks
+};

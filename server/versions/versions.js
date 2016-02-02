@@ -5,4 +5,6 @@ function getVersions() {
   return versions;
 }
 
-exports.getVersions = getVersions;
+export default {
+  getVersions
+};

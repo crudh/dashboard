@@ -1,9 +1,11 @@
-const checks = require("./checks");
+import checks from "./checks";
 
-const init = app => {
+function init(app) {
   app.get("/services/checks", (req, res) => {
     res.send(checks.getChecks());
   });
-};
+}
 
-exports.init = init;
+export default {
+  init
+};

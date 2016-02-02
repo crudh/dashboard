@@ -1,9 +1,11 @@
-const versions = require("./versions");
+import versions from "./versions";
 
-const init = app => {
+function init(app) {
   app.get("/services/versions", (req, res) => {
     res.send(versions.getVersions());
   });
-};
+}
 
-exports.init = init;
+export default {
+  init
+};
