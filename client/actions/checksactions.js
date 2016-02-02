@@ -1,10 +1,9 @@
-import {checkStatus} from "../core/statuses";
+import { checkStatus } from "../core/statuses";
 
+export const ADD_CHECK = "ADD_CHECK";
 export const FETCH_CHECKS = "FETCH_CHECKS";
 export const FETCH_CHECKS_COMPLETED = "FETCH_CHECKS_COMPLETED";
 export const FETCH_CHECKS_FAILED = "FETCH_CHECKS_FAILED";
-
-export const ADD_CHECK = "ADD_CHECK";
 
 function fetchChecksFromServer() {
   return fetch("http://localhost:3000/services/checks");
@@ -26,7 +25,9 @@ function fetchChecksFailed(error) {
 
 export function fetchChecks() {
   return dispatch => {
-    dispatch({type: FETCH_CHECKS});
+    dispatch({
+      type: FETCH_CHECKS
+    });
 
     return fetchChecksFromServer()
       .then(checkStatus)
@@ -40,6 +41,8 @@ export function fetchChecks() {
 
 export function addCheck() {
   return dispatch => {
-    dispatch({type: ADD_CHECK});
+    dispatch({
+      type: ADD_CHECK
+    });
   };
 }

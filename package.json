@@ -9,6 +9,17 @@
   },
   "license": "Apache-2.0",
   "main": "src/main.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node server/server.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build-dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
+    "watch-dev": "cross-env NODE_ENV=development webpack --watch --config webpack.config.js",
+    "start-dev": "cross-env NODE_ENV=development nodemon --watch server server/server.js",
+    "dev": "npm-run-all --parallel watch-dev start-dev",
+    "lint": "eslint client/**/*.js",
+    "docker-build": "docker build -t crudh/dashboard .",
+    "docker-run": "docker run -d -p 3001:3000 crudh/dashboard"
+  },
   "dependencies": {
     "babel-polyfill": "^6.3.0",
     "body-parser": "^1.12.0",
@@ -31,21 +42,14 @@
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.3.0",
     "babel-preset-react": "^6.3.0",
+    "cross-env": "^1.0.7",
     "css-loader": "^0.23.0",
-    "del": "^2.0.0",
+    "eslint-config-airbnb": "^4.0.0",
     "eslint-plugin-react": "^3.3.0",
-    "gulp": "^3.8.0",
-    "gulp-eslint": "^1.0.0",
-    "gulp-nodemon": "^2.0.0",
-    "gulp-util": "^3.0.0",
-    "run-sequence": "^1.1.0",
+    "nodemon": "^1.8.1",
+    "npm-run-all": "^1.5.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.0"
-  },
-  "scripts": {
-    "start": "NODE_ENV=production node server/server.js",
-    "docker-build": "docker build -t crudh/dashboard .",
-    "docker-run": "docker run -d -p 3001:3000 crudh/dashboard"
   },
   "keywords": [
     "dashboard"

@@ -1,4 +1,4 @@
-import {checkStatus} from "../core/statuses";
+import { checkStatus } from "../core/statuses";
 
 export const SET_ENVIRONMENT = "SET_ENVIRONMENT";
 export const FETCH_CHECKS = "FETCH_CHECKS";
@@ -34,7 +34,9 @@ function fetchChecksFailed(error) {
 
 export function fetchChecks() {
   return dispatch => {
-    dispatch({type: FETCH_CHECKS});
+    dispatch({
+      type: FETCH_CHECKS
+    });
 
     return fetchChecksFromServer()
       .then(checkStatus)
