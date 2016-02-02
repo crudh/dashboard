@@ -1,7 +1,7 @@
-import React, {Component, PropTypes} from "react";
-import {connect} from "react-redux";
-import {fetchChecks, addCheck} from "../../actions/checksactions";
-import {INIT} from "../../core/statuses";
+import React, { Component, PropTypes } from "react";
+import { connect } from "react-redux";
+import { fetchChecks, addCheck } from "../../actions/checksactions";
+import { INIT } from "../../core/statuses";
 import ChecksView from "./checksview";
 
 class ChecksController extends Component {
@@ -28,7 +28,7 @@ ChecksController.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const {list, status, error} = state.checks;
+  const { list, status, error } = state.checks;
 
   return {
     list,

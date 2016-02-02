@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from "react";
-import {connect} from "react-redux";
-import {setEnvironment} from "../../actions/environmentsactions";
+import React, { Component, PropTypes } from "react";
+import { connect } from "react-redux";
+import { setEnvironment } from "../../actions/environmentsactions";
 import EnvironmentsView from "./environmentsview";
 
 class EnvironmentsController extends Component {
@@ -30,8 +30,8 @@ EnvironmentsController.propTypes = {
 };
 
 function mapStateToProps(state, props) {
-  const {list, active} = state.environments;
-  const {environmentId} = props.params;
+  const { list, active } = state.environments;
+  const { environmentId } = props.params;
 
   return {
     list,

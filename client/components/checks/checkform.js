@@ -1,9 +1,9 @@
-import React, {Component, PropTypes} from "react";
-import {reduxForm} from "redux-form";
+import React, { Component, PropTypes } from "react";
+import { reduxForm } from "redux-form";
 
 class CheckForm extends Component {
   render() {
-    const {fields: {name}, handleSubmit} = this.props;
+    const { fields: { name }, handleSubmit } = this.props;
 
     return (
       <form>

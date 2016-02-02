@@ -1,11 +1,11 @@
 import "./environments.css";
 
-import React, {Component, PropTypes} from "react";
-import {Link} from "react-router";
+import React, { Component, PropTypes } from "react";
+import { Link } from "react-router";
 
 class TitleView extends Component {
   render() {
-    const {env, activeId} = this.props;
+    const { env, activeId } = this.props;
     if (env.id === activeId) {
       return <span>{env.name}</span>;
     }
@@ -21,7 +21,7 @@ TitleView.propTypes = {
 
 export default class EnvironmentsView extends Component {
   render() {
-    const {list, active} = this.props;
+    const { list, active } = this.props;
     if (!list) return (
       <span>No environments found</span>
     );

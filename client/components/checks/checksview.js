@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from "react";
-import {OK} from "../../core/statuses";
+import React, { Component, PropTypes } from "react";
+import { OK } from "../../core/statuses";
 import CheckForm from "./checkform";
 
 export default class ChecksView extends Component {
@@ -23,7 +23,7 @@ export default class ChecksView extends Component {
   }
 
   render() {
-    const {list, status, error, addCheck} = this.props;
+    const { list, status, error, addCheck } = this.props;
 
     return (
       <div className="grid">
