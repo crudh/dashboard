@@ -16,7 +16,7 @@
     "watch-dev": "cross-env NODE_ENV=development webpack --watch --config webpack.config.js",
     "start-dev": "cross-env NODE_ENV=development nodemon --watch server server/server.js",
     "dev": "npm-run-all --parallel watch-dev start-dev",
-    "lint": "eslint client/**/*.js",
+    "lint": "eslint client",
     "docker-build": "docker build -t crudh/dashboard .",
     "docker-run": "docker run -d -p 3001:3000 crudh/dashboard"
   },
