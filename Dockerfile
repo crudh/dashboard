@@ -16,7 +16,7 @@ WORKDIR /opt/dashboard
 
 RUN npm install
 
-RUN ./node_modules/gulp/bin/gulp.js build
+RUN npm build
 
 EXPOSE 3000
 
