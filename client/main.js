@@ -8,6 +8,7 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { syncHistory } from "react-router-redux";
 import thunk from "redux-thunk";
+import createLogger from "redux-logger";
 import rootReducer from "./reducers/reducers";
 import NotFoundView from "./components/common/notfoundview";
 import AppView from "./components/appview";
@@ -15,11 +16,17 @@ import IndexView from "./indexview";
 import ChecksController from "./components/checks/checkscontroller";
 import EnvironmentsController from "./components/environments/environmentscontroller";
 
+const nodeEnv = process.env.NODE_ENV || "development";
+
 const reduxRouterMiddleware = syncHistory(browserHistory);
-const createStoreWithMiddleware = applyMiddleware(
-  thunk,
-  reduxRouterMiddleware
-)(createStore);
+const middlewares = [thunk, reduxRouterMiddleware];
+
+if (nodeEnv === "development") {
+  const logger = createLogger();
+  middlewares.push(logger);
+}
+
+const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 const store = createStoreWithMiddleware(rootReducer);
 
 class Root extends Component {
