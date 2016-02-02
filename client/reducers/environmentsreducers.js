@@ -1,4 +1,4 @@
-import {SET_ENVIRONMENT} from "../actions/environmentsactions";
+import { SET_ENVIRONMENT } from "../actions/environmentsactions";
 
 const initialEnvironments = {
   list: [

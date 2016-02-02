@@ -1,5 +1,6 @@
-import {FETCH_CHECKS, FETCH_CHECKS_COMPLETED, FETCH_CHECKS_FAILED, ADD_CHECK} from "../actions/checksactions";
-import {INIT, LOADING, FAIL, OK} from "../core/statuses";
+import { FETCH_CHECKS, FETCH_CHECKS_COMPLETED, FETCH_CHECKS_FAILED } from "../actions/checksactions";
+import { ADD_CHECK } from "../actions/checksactions";
+import { INIT, LOADING, FAIL, OK } from "../core/statuses";
 
 const initialChecks = {
   list: [
