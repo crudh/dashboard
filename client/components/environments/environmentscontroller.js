@@ -9,9 +9,9 @@ class EnvironmentsController extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.environmentId !== this.props.environmentId) {
-      this.loadData(nextProps);
-    }
+    if (nextProps.environmentId === this.props.environmentId) return;
+
+    this.loadData(nextProps);
   }
 
   loadData(props) {

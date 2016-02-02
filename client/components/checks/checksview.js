@@ -12,14 +12,12 @@ export default class ChecksView extends Component {
       <div className="col-12">No checks found</div>
     );
 
-    return list.map(check => {
-      return (
-        <div key={check.id} className="col-12 grid">
-          <div className="col-3">{check.name}</div>
-          <div className="col-9">{check.status}</div>
-        </div>
-      );
-    });
+    return list.map(check => (
+      <div key={check.id} className="col-12 grid">
+        <div className="col-3">{check.name}</div>
+        <div className="col-9">{check.status}</div>
+      </div>
+    ));
   }
 
   render() {

@@ -6,9 +6,9 @@ import { Link } from "react-router";
 class TitleView extends Component {
   render() {
     const { env, activeId } = this.props;
-    if (env.id === activeId) {
-      return <span>{env.name}</span>;
-    }
+    if (env.id === activeId) return (
+      <span>{env.name}</span>
+    );
 
     return <Link to={`/environments/${env.id}`}>{env.name}</Link>;
   }
@@ -26,15 +26,13 @@ export default class EnvironmentsView extends Component {
       <span>No environments found</span>
     );
 
-    const environmentList = list.map(env => {
-      return (
-        <li key={env.id}>
-          <TitleView
-            env={env}
-            activeId={active.id}/>
-        </li>
-      );
-    });
+    const environmentList = list.map(env => (
+      <li key={env.id}>
+        <TitleView
+          env={env}
+          activeId={active.id}/>
+      </li>
+    ));
 
     return (
       <div className="grid">
