@@ -14,10 +14,9 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(nodeEnv)
+      "process.env.NODE_ENV": JSON.stringify(nodeEnv)
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.optimize.OccurenceOrderPlugin()
   ],
   module: {
     loaders: [{
@@ -30,7 +29,7 @@ const config = {
   }
 };
 
-if (nodeEnv == "production") {
+if (nodeEnv === "production") {
   config.plugins.push(
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -41,7 +40,7 @@ if (nodeEnv == "production") {
   );
 }
 
-if (nodeEnv == "development") {
+if (nodeEnv === "development") {
   config.devtool = "source-map";
 
   config.plugins.push(
