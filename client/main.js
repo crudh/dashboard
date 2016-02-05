@@ -14,16 +14,19 @@ import routes from "./routes/routes";
 
 const nodeEnv = process.env.NODE_ENV || "development";
 
-const reduxRouterMiddleware = syncHistory(browserHistory);
-const middlewares = [thunk, reduxRouterMiddleware];
+const middlewares = [
+  thunk,
+  syncHistory(browserHistory)
+];
 
 if (nodeEnv === "development") {
-  const logger = createLogger();
-  middlewares.push(logger);
+  middlewares.push(createLogger());
 }
 
-const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
-const store = createStoreWithMiddleware(rootReducer);
+const store = createStore(
+  rootReducer,
+  applyMiddleware(...middlewares)
+);
 
 ReactDOM.render(
   <Provider store={store}>
