@@ -1,17 +1,17 @@
 import React from "react";
 import { IndexRoute, Route } from "react-router";
-import NotFoundView from "../components/common/notfoundview";
-import AppView from "../components/appview";
-import IndexView from "../indexview";
-import ChecksController from "../components/checks/checkscontroller";
-import EnvironmentsController from "../components/environments/environmentscontroller";
+import NotFound from "../containers/notfound";
+import App from "../containers/app";
+import Index from "../containers/index";
+import Checks from "../containers/checks";
+import Environments from "../containers/environments";
 
 export default (
-  <Route path="/" component={AppView}>
-    <IndexRoute component={IndexView}/>
-    <Route path="environments" component={EnvironmentsController}/>
-    <Route path="environments/:environmentId" component={EnvironmentsController}/>
-    <Route path="checks" component={ChecksController}/>
-    <Route path="*" component={NotFoundView}/>
+  <Route path="/" component={App}>
+    <IndexRoute component={Index}/>
+    <Route path="environments" component={Environments}/>
+    <Route path="environments/:environmentId" component={Environments}/>
+    <Route path="checks" component={Checks}/>
+    <Route path="*" component={NotFound}/>
   </Route>
 );

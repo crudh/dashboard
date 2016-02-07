@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 
-export default class NotFoundView extends Component {
+export default class Index extends Component {
   render() {
     return (
       <div>
-        <h1>Not Found</h1>
+        <h1>dashboard</h1>
+        <span>Welcome</span>
       </div>
     );
   }

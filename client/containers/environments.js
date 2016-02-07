@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { setEnvironment } from "../../actions/environmentsactions";
-import EnvironmentsView from "./environmentsview";
+import { setEnvironment } from "../actions/environmentsactions";
+import EnvironmentsView from "../components/environments/environmentsview";
 
-class EnvironmentsController extends Component {
+class Environments extends Component {
   componentWillMount() {
     this.loadData(this.props);
   }
@@ -23,7 +23,7 @@ class EnvironmentsController extends Component {
   }
 }
 
-EnvironmentsController.propTypes = {
+Environments.propTypes = {
   list: PropTypes.array,
   active: PropTypes.object,
   environmentId: PropTypes.string
@@ -42,4 +42,4 @@ function mapStateToProps(state, props) {
 
 export default connect(mapStateToProps, {
   setEnvironment
-})(EnvironmentsController);
+})(Environments);

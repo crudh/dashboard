@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { fetchChecks, addCheck } from "../../actions/checksactions";
-import { INIT } from "../../core/statuses";
-import ChecksView from "./checksview";
+import { fetchChecks, addCheck } from "../actions/checksactions";
+import { INIT } from "../core/statuses";
+import ChecksView from "../components/checks/checksview";
 
-class ChecksController extends Component {
+class Checks extends Component {
   componentWillMount() {
     this.loadData(this.props);
   }
@@ -20,7 +20,7 @@ class ChecksController extends Component {
   }
 }
 
-ChecksController.propTypes = {
+Checks.propTypes = {
   list: PropTypes.array,
   status: PropTypes.string.isRequired,
   error: PropTypes.string,
@@ -40,4 +40,4 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   fetchChecks,
   addCheck
-})(ChecksController);
+})(Checks);
