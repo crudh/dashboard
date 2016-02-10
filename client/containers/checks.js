@@ -1,18 +1,18 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { fetchChecks, addCheck } from "../actions/checksactions";
 import { INIT } from "../core/statuses";
 import ChecksView from "../components/checks/checksview";
 
 class Checks extends Component {
   componentWillMount() {
-    this.loadData(this.props);
+    this.loadData();
   }
 
-  loadData(props) {
-    if (props.status !== INIT) return;
+  loadData() {
+    const { status, fetchChecks } = this.props;
+    if (status !== INIT) return;
 
-    props.fetchChecks();
+    fetchChecks();
   }
 
   render() {
@@ -21,10 +21,11 @@ class Checks extends Component {
 }
 
 Checks.propTypes = {
+  addCheck: PropTypes.func.isRequired,
+  fetchChecks: PropTypes.func.isRequired,
   list: PropTypes.array,
   status: PropTypes.string.isRequired,
-  error: PropTypes.string,
-  addCheck: PropTypes.func.isRequired
+  error: PropTypes.string
 };
 
 function mapStateToProps(state) {
@@ -36,6 +37,8 @@ function mapStateToProps(state) {
     error
   };
 }
+
+import { fetchChecks, addCheck } from "../actions/checksactions";
 
 export default connect(mapStateToProps, {
   fetchChecks,
