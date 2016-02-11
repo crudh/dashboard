@@ -1,45 +1,48 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { setEnvironment } from "../actions/environmentsactions";
+import { routeActions } from "react-router-redux";
 import EnvironmentsView from "../components/environments/environmentsview";
 
 class Environments extends Component {
   componentWillMount() {
-    this.loadData(this.props);
+    this.loadData();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.environmentId === this.props.environmentId) return;
+  loadData() {
+    const { params, setEnvironment } = this.props;
+    if (!params || !params.id) return;
 
-    this.loadData(nextProps);
-  }
-
-  loadData(props) {
-    props.setEnvironment(props.environmentId);
+    setEnvironment(params.id);
   }
 
   render() {
-    return <EnvironmentsView {...this.props}/>;
+    const { list, active, setEnvironment, push } = this.props;
+
+    return <EnvironmentsView {...{ list, active, setEnvironment, push }}/>;
   }
 }
 
 Environments.propTypes = {
+  setEnvironment: PropTypes.func.isRequired,
+  push: PropTypes.func.isRequired,
+  params: PropTypes.object,
   list: PropTypes.array,
-  active: PropTypes.object,
-  environmentId: PropTypes.string
+  active: PropTypes.object
 };
 
 function mapStateToProps(state, props) {
   const { list, active } = state.environments;
-  const { environmentId } = props.params;
 
   return {
+    params: props.params,
     list,
-    active,
-    environmentId
+    active
   };
 }
 
+import { setEnvironment } from "../actions/environmentsactions";
+
 export default connect(mapStateToProps, {
-  setEnvironment
+  setEnvironment,
+  push: routeActions.push
 })(Environments);

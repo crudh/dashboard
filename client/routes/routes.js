@@ -10,7 +10,7 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={Index}/>
     <Route path="environments" component={Environments}/>
-    <Route path="environments/:environmentId" component={Environments}/>
+    <Route path="environments/:id" component={Environments}/>
     <Route path="checks" component={Checks}/>
     <Route path="*" component={NotFound}/>
   </Route>
