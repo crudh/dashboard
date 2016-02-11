@@ -3,6 +3,13 @@ import { connect } from "react-redux";
 import EnvironmentsView from "../components/environments/environmentsview";
 
 class Environments extends Component {
+  static propTypes = {
+    setEnvironment: PropTypes.func.isRequired,
+    params: PropTypes.object,
+    list: PropTypes.array,
+    active: PropTypes.object
+  };
+
   componentWillMount() {
     this.loadData();
   }
@@ -20,13 +27,6 @@ class Environments extends Component {
     return <EnvironmentsView {...{ list, active, setEnvironment }}/>;
   }
 }
-
-Environments.propTypes = {
-  setEnvironment: PropTypes.func.isRequired,
-  params: PropTypes.object,
-  list: PropTypes.array,
-  active: PropTypes.object
-};
 
 function mapStateToProps(state, props) {
   const { list, active } = state.environments;
