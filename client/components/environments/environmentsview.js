@@ -4,35 +4,48 @@ import React, { Component, PropTypes } from "react";
 import { Link } from "react-router";
 
 class TitleView extends Component {
-  render() {
-    const { env, activeId } = this.props;
-    if (env.id === activeId) return (
-      <span>{env.name}</span>
-    );
+  constructor() {
+    super();
 
-    return <Link to={`/environments/${env.id}`}>{env.name}</Link>;
+    this.selectEnvironment = this.selectEnvironment.bind(this);
+  }
+
+  selectEnvironment() {
+    const { env, setEnvironment } = this.props;
+
+    setEnvironment(env.id);
+  }
+
+  render() {
+    const { env, active } = this.props;
+    const title = env.id === active.id ?
+      <span>{env.name}</span>
+      : <Link to={`/environments/${env.id}`} onClick={this.selectEnvironment}>{env.name}</Link>;
+
+    return (
+      <li key={env.id}>
+        {title}
+      </li>
+    );
   }
 }
 
 TitleView.propTypes = {
+  setEnvironment: PropTypes.func.isRequired,
   env: PropTypes.object.isRequired,
-  activeId: PropTypes.string
+  active: PropTypes.object
 };
 
 export default class EnvironmentsView extends Component {
   render() {
-    const { list, active } = this.props;
+    const { list, active, setEnvironment } = this.props;
     if (!list) return (
       <span>No environments found</span>
     );
 
-    const environmentList = list.map(env => (
-      <li key={env.id}>
-        <TitleView
-          env={env}
-          activeId={active.id}/>
-      </li>
-    ));
+    const environmentList = list.map(env =>
+      <TitleView key={env.id} {...{ env, active, setEnvironment }}/>
+    );
 
     return (
       <div className="grid">
@@ -57,6 +70,7 @@ export default class EnvironmentsView extends Component {
 }
 
 EnvironmentsView.propTypes = {
+  setEnvironment: PropTypes.func.isRequired,
   list: PropTypes.array,
   active: PropTypes.object
 };

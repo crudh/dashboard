@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { routeActions } from "react-router-redux";
 import EnvironmentsView from "../components/environments/environmentsview";
 
 class Environments extends Component {
@@ -16,15 +15,14 @@ class Environments extends Component {
   }
 
   render() {
-    const { list, active, setEnvironment, push } = this.props;
+    const { list, active, setEnvironment } = this.props;
 
-    return <EnvironmentsView {...{ list, active, setEnvironment, push }}/>;
+    return <EnvironmentsView {...{ list, active, setEnvironment }}/>;
   }
 }
 
 Environments.propTypes = {
   setEnvironment: PropTypes.func.isRequired,
-  push: PropTypes.func.isRequired,
   params: PropTypes.object,
   list: PropTypes.array,
   active: PropTypes.object
@@ -43,6 +41,5 @@ function mapStateToProps(state, props) {
 import { setEnvironment } from "../actions/environmentsactions";
 
 export default connect(mapStateToProps, {
-  setEnvironment,
-  push: routeActions.push
+  setEnvironment
 })(Environments);
