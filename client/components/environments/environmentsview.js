@@ -4,17 +4,17 @@ import React, { Component, PropTypes } from "react";
 import { Link } from "react-router";
 
 class TitleView extends Component {
-  constructor() {
-    super();
+  static propTypes = {
+    setEnvironment: PropTypes.func.isRequired,
+    env: PropTypes.object.isRequired,
+    active: PropTypes.object
+  };
 
-    this.selectEnvironment = this.selectEnvironment.bind(this);
-  }
-
-  selectEnvironment() {
+  selectEnvironment = () => {
     const { env, setEnvironment } = this.props;
 
     setEnvironment(env.id);
-  }
+  };
 
   render() {
     const { env, active } = this.props;
@@ -30,13 +30,13 @@ class TitleView extends Component {
   }
 }
 
-TitleView.propTypes = {
-  setEnvironment: PropTypes.func.isRequired,
-  env: PropTypes.object.isRequired,
-  active: PropTypes.object
-};
-
 export default class EnvironmentsView extends Component {
+  static propTypes = {
+    setEnvironment: PropTypes.func.isRequired,
+    list: PropTypes.array,
+    active: PropTypes.object
+  };
+
   render() {
     const { list, active, setEnvironment } = this.props;
     if (!list) return (
@@ -68,9 +68,3 @@ export default class EnvironmentsView extends Component {
     );
   }
 }
-
-EnvironmentsView.propTypes = {
-  setEnvironment: PropTypes.func.isRequired,
-  list: PropTypes.array,
-  active: PropTypes.object
-};

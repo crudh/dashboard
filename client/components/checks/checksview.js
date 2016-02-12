@@ -3,6 +3,13 @@ import { OK } from "../../core/statuses";
 import CheckForm from "./checkform";
 
 export default class ChecksView extends Component {
+  static propTypes = {
+    list: PropTypes.array,
+    status: PropTypes.string.isRequired,
+    error: PropTypes.string,
+    addCheck: PropTypes.func.isRequired
+  };
+
   renderChecks(list, status, error) {
     if (status !== OK) return (
       <div className="col-12">{status} {error}</div>
@@ -47,10 +54,3 @@ export default class ChecksView extends Component {
     );
   }
 }
-
-ChecksView.propTypes = {
-  list: PropTypes.array,
-  status: PropTypes.string.isRequired,
-  error: PropTypes.string,
-  addCheck: PropTypes.func.isRequired
-};
