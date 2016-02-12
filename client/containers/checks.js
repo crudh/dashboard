@@ -4,6 +4,14 @@ import { INIT } from "../core/statuses";
 import ChecksView from "../components/checks/checksview";
 
 class Checks extends Component {
+  static propTypes = {
+    addCheck: PropTypes.func.isRequired,
+    fetchChecks: PropTypes.func.isRequired,
+    list: PropTypes.array,
+    status: PropTypes.string.isRequired,
+    error: PropTypes.string
+  };
+
   componentWillMount() {
     this.loadData();
   }
@@ -19,14 +27,6 @@ class Checks extends Component {
     return <ChecksView {...this.props}/>;
   }
 }
-
-Checks.propTypes = {
-  addCheck: PropTypes.func.isRequired,
-  fetchChecks: PropTypes.func.isRequired,
-  list: PropTypes.array,
-  status: PropTypes.string.isRequired,
-  error: PropTypes.string
-};
 
 function mapStateToProps(state) {
   const { list, status, error } = state.checks;
