@@ -4,7 +4,7 @@ import "whatwg-fetch";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Router, browserHistory } from "react-router";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import { syncHistory } from "react-router-redux";
 import thunk from "redux-thunk";
@@ -19,14 +19,18 @@ const middlewares = [
   syncHistory(browserHistory)
 ];
 
+let devTools = f => f;
 if (nodeEnv === "development") {
   middlewares.push(createLogger());
+  if (typeof window === "object" && typeof window.devToolsExtension !== "undefined") {
+    devTools = window.devToolsExtension();
+  }
 }
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(...middlewares)
-);
+const store = createStore(rootReducer, {}, compose(
+  applyMiddleware(...middlewares),
+  devTools
+));
 
 ReactDOM.render(
   <Provider store={store}>
