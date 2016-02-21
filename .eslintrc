@@ -15,6 +15,7 @@
     "max-len": [2, 120, 4],
     "quotes": [2, "double"],
     "react/no-multi-comp": 0,
-    "react/jsx-closing-bracket-location": 0
+    "react/jsx-closing-bracket-location": 0,
+    "react/jsx-space-before-closing": [1, "never"]
   }
 }
